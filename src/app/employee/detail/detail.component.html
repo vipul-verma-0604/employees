@@ -1,0 +1,35 @@
+<div class="emp-details">
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active" href="" (click)="onBack($event)">Go Back</a>
+    </li>    
+  </ul>
+    <table class="table table-bordered" *ngIf="employee">
+      <thead>
+        <tr>
+          <th colspan="5" class="bg-warning">DETAIL PAGE</th>
+        </tr>
+        <tr>
+          <th colspan="5"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td colspan="1">Name</td>
+            <td colspan="4">{{employee.employee_name}}</td>
+        </tr>
+        <tr>
+            <td colspan="1">ID</td>
+            <td colspan="4">{{employee.id}}</td>
+        </tr>
+        <tr>
+            <td colspan="1">AGE</td>
+            <td colspan="4">{{employee.employee_age}}</td>
+        </tr>
+        <tr>
+            <td colspan="1">SALARY</td>
+            <td colspan="4">{{employee.employee_salary}}</td>
+        </tr>
+      </tbody>
+    </table>      
+  </div>

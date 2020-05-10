@@ -1,0 +1,23 @@
+<div class="employee-form">
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active" href="" (click)="onBack($event)">Go Back</a>
+    </li>    
+  </ul>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" placeholder="Enter name" formControlName="emp_name" maxlength="15">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input type="text" class="form-control" placeholder="Enter salary" formControlName="emp_salary" maxlength="6">
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="text" class="form-control" placeholder="Enter age" formControlName="emp_age" maxlength="3">
+    </div>  
+    <button type="submit" class="btn btn-secondary btn-success" *ngIf="type == 'add'">Add Employee</button>
+    <button type="submit" class="btn btn-secondary btn-success" *ngIf="type == 'edit'">Update Employee</button>
+  </form>
+</div>

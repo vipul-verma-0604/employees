@@ -1,0 +1,52 @@
+<div class="row" *ngIf="view == 'allEmp'">
+  <div class="col-md-9">
+    <div class="all-emp">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+            <th colspan="1" class="bg-warning add-employee" (click)="onAddEmployee()">ADD EMPLOYEE</th>
+          </tr>
+          <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>          
+          <tr *ngFor="let emp of employees | paginate: { itemsPerPage: 6, currentPage: p }; let i = index">
+            <td><a href="" (click)="getDetail($event, emp.id)">{{emp.id}}</a></td>
+            <td>{{emp.employee_name}}</td>
+            <td>{{emp.employee_age}}</td>
+            <td>{{emp.employee_salary}}</td>
+            <td>
+              <div>
+                <button type="button" class="btn btn-secondary" (click)="onEdit(emp)">Edit</button>&nbsp;
+                <button type="button" class="btn btn-secondary" (click)="onDelete(emp.id)">Delete</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5" *ngIf="employees && employees.length == 0">No data Found</td>
+          </tr>
+        </tbody>
+      </table>      
+    </div>
+  </div>
+  <div class="col-md-12">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<div class="row" *ngIf="view == 'details'">
+  <div class="col-md-6">
+    <app-detail (onBack)="onback($event)" [employee]="emp"></app-detail>
+  </div>
+</div>
+<div class="row" *ngIf="view == 'create'">
+  <div class="col-md-6">
+    <app-create (onBack)="onback($event)" [emp]="emp" [type]="type" (msg)="onMsg($event)"></app-create>
+  </div>
+</div>
+<app-loader></app-loader>
